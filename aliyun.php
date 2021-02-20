@@ -14,7 +14,7 @@ if (!is_dir($dir . $_GET['project'])) {
     exit;
 }
 
-fwrite($handle, date('Y-m-d H:i:s ') . 'token right' . $_GET['project'] . PHP_EOL);
+fwrite($handle, date('Y-m-d H:i:s ') . 'token right ' . $_GET['project'] . PHP_EOL);
 
 $resource = proc_open(
     'git reset --hard && git pull 2>&1',
