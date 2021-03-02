@@ -17,11 +17,15 @@ if (!is_dir($dir . $_GET['project'])) {
 fwrite($handle, date('Y-m-d H:i:s ') . 'token right ' . $_GET['project'] . PHP_EOL);
 
 $resource = proc_open(
-    'git reset --hard && git pull 2>&1',
-    [1 => ['file', $log, 'a']],
+    'git reset --hard && git pull',
+    [
+        1 => ['file', $log, 'a'],
+        2 => ['file', $log, 'a'],
+    ],
     $pipes,
     $dir . $_GET['project']
 );
 
 fclose($pipes[1]);
+fclose($pipes[2]);
 proc_close($resource);
