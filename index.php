@@ -18,7 +18,7 @@ if ($sync == 1) {
     $cmd .= ' && rsync -ra --delete --exclude=.git --exclude=runtime . ' . DIR_SYNC . DIRECTORY_SEPARATOR . $project;
 }
 $resource = proc_open(
-    'git reset --hard && git pull',
+    $cmd,
     [
         1 => [
             'pipe',
